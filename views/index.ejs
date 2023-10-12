@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hjdhdsd</title>
+  </head>
+  <body>
+   <input type="text" placeholder="enter text message">
+   <button>Send message</button>
+   <hr>
+   <h1>here the message</h1>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+    </script>
+    <script>
+    var inp =  document.querySelector("input");
+    var btn =  document.querySelector("button");
+    var h1 =  document.querySelector("h1");
+
+    btn.addEventListener('click',function(kuch){
+      console.log((inp).value)
+      socket.emit('message',inp.value)
+
+      socket.on('message',(msg)=>{
+        h1.innerHTML = msg
+
+    })
+    })
+    </script>
+  </body>
+</html>
